@@ -7,7 +7,12 @@ WORKDIR /norm-fullstack
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    curl \
     && rm -rf /var/lib/apt/lists/*
+
+# Install Rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Copy the dependencies file to the working directory
 COPY requirements.txt .
@@ -21,9 +26,7 @@ ENV OPENAI_API_KEY=$OPENAI_API_KEY
 # Copy the content of the local directories to the working directory
 COPY ./app /norm-fullstack/app
 COPY ./docs /norm-fullstack/docs
+COPY ./test_utils.py /norm-fullstack/test_utils.py
 
-# Expose the port the app runs on
-EXPOSE 80
-
-# Command to run on container start
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--log-level", "info"]
+# Command to run the test script
+CMD ["python", "test_utils.py"]
