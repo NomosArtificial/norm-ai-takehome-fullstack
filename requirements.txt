@@ -1,2 +1,10 @@
-pydantic==2.5.3
+pydantic>=2.0.0
 # add additional modules here
+llama_index
+fastapi>=0.100.0
+qdrant_client
+pdfplumber
+llama-index-vector-stores-qdrant
+llama-index-embeddings-openai
+llama-index-llms-openai
+llama-index-core
