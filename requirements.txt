@@ -8,3 +8,4 @@ llama-index-vector-stores-qdrant
 llama-index-embeddings-openai
 llama-index-llms-openai
 llama-index-core
+tqdm>=4.65.0
