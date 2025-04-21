@@ -44,7 +44,7 @@ In `eval_data/dataset.jsonl` we've created a small dataset of input queries and 
 Running the evaluation script is currently fairly rudimentary. As you make changes to your DocumentService or QdrantService in utils, the changes will be imported into the main function of `evaluate.py` and thus leveraged in a new evaluation run by calling `python app/evaluate.py`. In the future, we will want to better specify the inputs to the evaluate script as a declarative configuration file.
 
 
-### Design choices (TO FINISH)
+### Design choices
 
 There are two primary design choices for this RAG application: 1) how to index the laws, and 2) how to retrieve the laws based on the query and inject into the prompt. 
 
